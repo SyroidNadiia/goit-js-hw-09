@@ -10,7 +10,7 @@ body {
   background-color: #fafafa;
   color: #212121;
   line-height: 1.5;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 img {
@@ -18,11 +18,39 @@ img {
   max-width: 100%;
 }
 
-/* button {
-  padding: 6px;
+.buttons-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  height: 100vh;
+}
+
+.buttons-toggle > button {
   text-transform: uppercase;
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-} */
+  padding: 6px;
+}
+
+.value {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.label {
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.timer {
+  display: flex;
+  gap: 20px;
+  padding-top: 25px;
+}

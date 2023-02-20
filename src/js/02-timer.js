@@ -1,11 +1,11 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
+import Notiflix from 'notiflix';
 
 flatpickr('#datetime-picker', {
   enableTime: true,
   time_24hr: true,
   defaultDate: new Date(),
-  // minDate: 'today',
   minuteIncrement: 1,
   onClose(selectedDates) {
     console.log(selectedDates[0]);
@@ -21,7 +21,6 @@ const refs = {
   seconds: document.querySelector('span[data-seconds]'),
 };
 
-// let timerId = null;
 let time = {};
 
 refs.btnStart.addEventListener('click', onClickStart);
@@ -32,7 +31,10 @@ function onClickStart() {
   refs.btnStart.disabled = true;
   const intervalId = setInterval(() => {
     const dif = calculationDifference();
-    const time = convertMs(dif);
+    if (dif <= 0) {
+      return;
+    }
+    time = convertMs(dif);
     updateTimeFace(time);
   }, 1000);
 }
@@ -46,11 +48,10 @@ function calculationDifference() {
 function onChangeData() {
   const difference = calculationDifference();
   if (difference <= 0) {
-    alert('Please choose a date in the future');
+    // alert('Please choose a date in the future');
+    Notiflix.Notify.failure('Please choose a date in the future');
   } else {
     refs.btnStart.disabled = false;
-    time = convertMs(difference);
-    updateTimeFace(time);
   }
 }
 
