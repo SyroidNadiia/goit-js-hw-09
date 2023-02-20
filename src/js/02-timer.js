@@ -48,7 +48,6 @@ function calculationDifference() {
 function onChangeData() {
   const difference = calculationDifference();
   if (difference <= 0) {
-    // alert('Please choose a date in the future');
     Notiflix.Notify.failure('Please choose a date in the future');
   } else {
     refs.btnStart.disabled = false;
