@@ -1,32 +1,24 @@
 import Notiflix from 'notiflix';
 
-refs = {
+const refs = {
   form: document.querySelector('.form'),
-  delay: document.querySelector('input[name="delay"]'),
-  step: document.querySelector('input[name="step"]'),
-  amount: document.querySelector('input[name="amount"]'),
   btn: document.querySelector('button[type="submit"]'),
 };
 
-refs.form.addEventListener('submit', event => {
-  event.preventDefault();
-});
-refs.delay.addEventListener('input', event => {
-  delay = Number(event.target.value);
-});
-refs.step.addEventListener('input', event => {
-  step = Number(event.target.value);
-});
-refs.amount.addEventListener('input', event => {
-  amount = event.target.value;
-});
+refs.form.addEventListener('submit', onSubmitForm);
 refs.btn.addEventListener('click', onClickBtn);
 
-const formData = {};
 let delay = 0;
 let step = 0;
 let amount = 0;
 let position = 0;
+
+function onSubmitForm(event) {
+  event.preventDefault();
+  delay = Number(event.target.elements.delay.value);
+  step = Number(event.target.elements.step.value);
+  amount = event.target.elements.amount.value;
+}
 
 function onClickBtn() {
   if (position >= amount) {
