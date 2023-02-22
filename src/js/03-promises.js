@@ -2,11 +2,9 @@ import Notiflix from 'notiflix';
 
 const refs = {
   form: document.querySelector('.form'),
-  btn: document.querySelector('button[type="submit"]'),
 };
 
 refs.form.addEventListener('submit', onSubmitForm);
-refs.btn.addEventListener('click', onClickBtn);
 
 let delay = 0;
 let step = 0;
@@ -18,6 +16,7 @@ function onSubmitForm(event) {
   delay = Number(event.target.elements.delay.value);
   step = Number(event.target.elements.step.value);
   amount = event.target.elements.amount.value;
+  onClickBtn();
 }
 
 function onClickBtn() {
