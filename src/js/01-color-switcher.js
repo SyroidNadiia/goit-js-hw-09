@@ -3,8 +3,7 @@ const btnStopEl = document.querySelector('button[data-stop]');
 
 btnStartEl.addEventListener('click', onClickStart);
 btnStopEl.addEventListener('click', onClickStop);
-btnStartEl.disabled = false;
-btnStopEl.disabled = true;
+onChangeDisabled(false);
 
 let timerID = null;
 
@@ -14,8 +13,7 @@ function getRandomHexColor() {
 
 function onClickStart(event) {
   timerID = setInterval(onChangeColor, 1000);
-  btnStartEl.disabled = true;
-  btnStopEl.disabled = false;
+  onChangeDisabled(true);
 }
 
 function onChangeColor() {
@@ -24,6 +22,10 @@ function onChangeColor() {
 
 function onClickStop(event) {
   clearInterval(timerID);
-  btnStartEl.disabled = false;
-  btnStopEl.disabled = true;
+  onChangeDisabled(false);
+}
+
+function onChangeDisabled(boolean) {
+  btnStartEl.disabled = boolean;
+  btnStopEl.disabled = !boolean;
 }

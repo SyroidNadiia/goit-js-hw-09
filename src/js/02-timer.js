@@ -9,6 +9,7 @@ flatpickr('#datetime-picker', {
   minuteIncrement: 1,
   onClose(selectedDates) {
     console.log(selectedDates[0]);
+    onChangeData();
   },
 });
 
@@ -24,7 +25,6 @@ const refs = {
 let time = {};
 
 refs.btnStart.addEventListener('click', onClickStart);
-refs.input.addEventListener('change', onChangeData);
 refs.btnStart.disabled = true;
 
 function onClickStart() {
@@ -41,7 +41,7 @@ function onClickStart() {
 
 function calculationDifference() {
   const inputDate = new Date(refs.input.value).getTime();
-  const currentData = new Date().getTime();
+  const currentData = Date.now();
   return inputDate - currentData;
 }
 
